@@ -7,13 +7,13 @@
 </ion-header>
 
 <ion-content>
-  <ion-item color="dark">
+  <ion-item color="light">
     <ion-label>Rest duration</ion-label>
     <ion-datetime display-format="mm:ss" placeholder="Tap here" [(ngModel)]="fullTime"></ion-datetime>
   </ion-item>
-<circle-progress (click)="startTime()"
-[percent]="85"
-[radius]="100"
+<circle-progress class="time" (click)="startTime()"
+[percent]="percent"
+[radius]="radius"
 [outerStrokeWidth]="16"
 [innerStrokeWidth]="8"
 [outerStrokeColor]="'#78C000'"
@@ -21,5 +21,17 @@
 [animation]="true"
 [animationDuration]="300"
 ></circle-progress>
-
+<p>{{elpased.h}}:{{elpased.m}}:{{elpased.s}}</p>
+<ion-fab vertical="bottom" horizontal="end" slot="fixed">
+  <ng-container *ngIf="timer===false;else running">
+    <ion-fab-button (click)="startTime()">
+      <ion-icon name="play"></ion-icon>
+    </ion-fab-button>
+  </ng-container>
+  <ng-template #running>
+    <ion-fab-button (click)="stopTime()">
+      <ion-icon name="square"></ion-icon>
+    </ion-fab-button>
+  </ng-template>
+</ion-fab>
 </ion-content>
