@@ -10,8 +10,7 @@ percent:number= 0;
 radius:number=100;
 fullTime:any='00:01:30';
 minutes:number=1;
-seconds:any=30;
-
+seconds:any=10;
 timer:any=false;
 progress:any=0;
 elpased:any={
@@ -20,6 +19,7 @@ elpased:any={
   s:'00'
 }
 overAllTimer:any=false;
+
 
 startTime(){
 
@@ -76,7 +76,7 @@ pad(num,size){
 
 stopTime(){
   clearInterval(this.timer);
-  clearImmediate(this.overAllTimer);
+  clearInterval(this.overAllTimer);
   this.overAllTimer=false;
   this.timer=false;
   this.percent=0;
